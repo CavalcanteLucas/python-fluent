@@ -106,7 +106,7 @@ pyzmq==22.0.3
 qtconsole==5.0.2
 QtPy==1.9.0
 regex==2021.9.24
-reportlab==3.5.34
+reportlab==3.5.55
 requests==2.22.0
 requests-unixsocket==0.2.0
 SecretStorage==2.3.1
