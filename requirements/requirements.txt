@@ -30,7 +30,7 @@ entrypoints==0.3
 fasteners==0.14.1
 flake8==3.8.4
 future==0.18.2
-Guake==3.6.3
+Guake==3.8.5
 httplib2==0.14.0
 idna==2.8
 ipykernel==5.5.0
