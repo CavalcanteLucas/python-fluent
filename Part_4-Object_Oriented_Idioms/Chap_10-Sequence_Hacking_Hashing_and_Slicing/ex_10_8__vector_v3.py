@@ -1,5 +1,6 @@
 from ex_10_6__vector_v2 import VectorV2
 
+
 class VectorV3(VectorV2):
     shortcut_names = 'xyzt'
 

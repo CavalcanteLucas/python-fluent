@@ -3,15 +3,16 @@ from evalsupport import MetaAleph
 
 print('<[1]> evaltime_meta module start')
 
+
 @deco_alpha
-class ClassThree():
+class ClassThree:
     print('<[2]> ClassThree body')
 
     def method_y(self):
         print('<[3]> ClassThree.method_y')
 
 
-class ClassFour():
+class ClassFour:
     print('<[4]> ClassFour body')
 
     def method_y(self):
