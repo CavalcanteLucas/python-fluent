@@ -2,12 +2,14 @@ import functools
 
 from ex_7_15__clock import clock
 
+
 @functools.lru_cache()
 @clock
 def fibonacci(n):
     if n < 2:
         return n
-    return fibonacci(n-2) + fibonacci(n-1)
+    return fibonacci(n - 2) + fibonacci(n - 1)
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     print(fibonacci(6))

@@ -2,18 +2,19 @@ import unicodedata
 
 from ex_4_16__sanitize import shave_marks_latin
 
-single_map = str.maketrans("""‚ƒ„†ˆ‹‘’“”•–—˜›""",
-                           """'f"*^<''""---~>""")
+single_map = str.maketrans("""‚ƒ„†ˆ‹‘’“”•–—˜›""", """'f"*^<''""---~>""")
 
-multi_map = str.maketrans({
-    '€': '<euro>',
-    '…': '...',
-    'Œ': 'OE',
-    '™': '(TM)',
-    'œ': 'oe',
-    '‰': '<per mille>',
-    '‡': '**',
-})
+multi_map = str.maketrans(
+    {
+        '€': '<euro>',
+        '…': '...',
+        'Œ': 'OE',
+        '™': '(TM)',
+        'œ': 'oe',
+        '‰': '<per mille>',
+        '‡': '**',
+    }
+)
 
 multi_map.update(single_map)
 

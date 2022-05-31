@@ -8,7 +8,7 @@ from ex_10_10__vector_v3_b import VectorV3B
 
 
 class VectorV4(VectorV3B):
-    typecode = "d"
+    typecode = 'd'
 
     # Example 10-12
     # def __eq__(self, other):
@@ -25,7 +25,9 @@ class VectorV4(VectorV3B):
 
     # Example 10-14
     def __eq__(self, other):
-        return len(self) == len(other) and all(a == b for a, b in zip(self, other))
+        return len(self) == len(other) and all(
+            a == b for a, b in zip(self, other)
+        )
 
     def __hash__(self):
         hashes = (hash(x) for x in self._components)

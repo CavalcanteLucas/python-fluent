@@ -4,7 +4,7 @@ import math
 
 
 class Vector:
-    typecode = "d"
+    typecode = 'd'
 
     def __init__(self, components):
         self._components = array(self.typecode, components)
@@ -14,8 +14,8 @@ class Vector:
 
     def __repr__(self):
         components = reprlib.repr(self._components)
-        components = components[components.find("[") : -1]
-        return "Vector({})".format(components)
+        components = components[components.find('[') : -1]
+        return 'Vector({})'.format(components)
 
     def __str__(self):
         return str(tuple(self))
@@ -31,7 +31,7 @@ class Vector:
 
     def __bool__(self):
         return bool(abs(self))
-    
+
     @classmethod
     def frombytes(cls, octets):
         typecode = chr(octets[0])

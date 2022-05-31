@@ -1,5 +1,6 @@
 from ex_10_8__vector_v3 import VectorV3
 
+
 class VectorV3B(VectorV3):
     def __setattr__(self, name, value):
         cls = type(self)

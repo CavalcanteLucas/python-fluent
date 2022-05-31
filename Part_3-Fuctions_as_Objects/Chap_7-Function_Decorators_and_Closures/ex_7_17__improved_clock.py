@@ -1,6 +1,7 @@
 import time
 import functools
 
+
 def clock(func):
     @functools.wraps(func)
     def clocked(*args, **kwargs):
@@ -17,4 +18,5 @@ def clock(func):
         arg_str = ', '.join(arg_lst)
         print('[%0.8fs] %s(%s) -> %r ' % (elapsed, name, arg_str, result))
         return result
+
     return clocked
