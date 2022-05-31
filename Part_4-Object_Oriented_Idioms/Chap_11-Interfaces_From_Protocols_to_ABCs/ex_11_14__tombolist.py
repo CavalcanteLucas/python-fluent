@@ -11,7 +11,7 @@ class TomboList(list):
         else:
             raise LookupError('pop from empty TomboList')
 
-        load = list.extend
+    load = list.extend
 
     def loaded(self):
         return bool(self)
