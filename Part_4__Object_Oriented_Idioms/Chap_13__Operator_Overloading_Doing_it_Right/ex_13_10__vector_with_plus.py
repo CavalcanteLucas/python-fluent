@@ -1,7 +1,10 @@
 import setup
 
 import itertools
-from Chap_10__Sequence_Hacking_Hashing_and_Slicing.ex_10_16__vector_v5 import Vector
+from Chap_10__Sequence_Hacking_Hashing_and_Slicing.ex_10_16__vector_v5 import (
+    Vector,
+)
+
 
 class VectorV9(Vector):
     typecode = 'd'
@@ -12,6 +15,6 @@ class VectorV9(Vector):
             return VectorV9(a + b for a, b in pairs)
         except TypeError:
             return NotImplemented
-    
+
     def __radd__(self, other):
         return self + other
