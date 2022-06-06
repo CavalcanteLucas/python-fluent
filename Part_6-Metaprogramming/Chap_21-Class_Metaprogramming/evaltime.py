@@ -2,7 +2,8 @@ from evalsupport import deco_alpha
 
 print('<[1]> evaltime module start')
 
-class ClassOne():
+
+class ClassOne:
     print('<[2]> ClassOne body')
 
     def __init__(self):
@@ -19,7 +20,7 @@ class ClassOne():
 
 
 @deco_alpha
-class ClassThree():
+class ClassThree:
     print('<[7]> ClassThree body')
 
     def method_y(self):

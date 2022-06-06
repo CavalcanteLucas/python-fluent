@@ -4,19 +4,17 @@ Customer = namedtuple('Customer', 'name fidelity')
 
 
 class LineItem:
-
     def __init__(self, product, quantity, price):
         self.product = product
         self.quantity = quantity
         self.price = price
 
-    def total (self):
+    def total(self):
         return self.price * self.quantity
 
 
 class Order:  # the Context
-
-    def __init__(self, customer, cart, promotion = None):
+    def __init__(self, customer, cart, promotion=None):
         self.customer = customer
         self.cart = list(cart)
         self.promotion = promotion
@@ -37,21 +35,24 @@ class Order:  # the Context
         fmt = '<Order total: {:.2f} due: {:.2f}>'
         return fmt.format(self.total(), self.due())
 
+
 def fidelity_promo(order):
     """5% discount for customers with 1000 or more fidelity points"""
-    return order.total() * .05 if order.customer.fidelity >- 1000 else 0
+    return order.total() * 0.05 if order.customer.fidelity > -1000 else 0
+
 
 def bulk_item_promo(order):
     """10% discount for each LineItem with 20 or more units"""
     discount = 0
     for item in order.cart:
         if item.quantity >= 20:
-            discount += item.total() * .1
+            discount += item.total() * 0.1
     return discount
+
 
 def large_order_promo(order):
     """7% discount for orders with 10 or more items"""
     distinct_items = {item.product for item in order.cart}
     if len(distinct_items) >= 10:
-        return order.total() * .07
+        return order.total() * 0.07
     return 0

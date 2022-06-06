@@ -1,6 +1,7 @@
 import math
 from ex_9_2__vector2d import Vector2d
 
+
 class Vector2d_v3(Vector2d):
     def angle(self):
         return math.atan2(self.y, self.x)

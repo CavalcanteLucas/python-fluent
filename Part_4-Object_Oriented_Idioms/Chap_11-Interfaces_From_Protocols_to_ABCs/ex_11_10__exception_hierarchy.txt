@@ -1,0 +1,20 @@
+BaseException
+ |-- SystemExit
+ |-- KeyboardInterrupt
+ |-- GeneratorExit
+ +-- Exception
+      |-- StopIteration
+      |-- ArithmethicError
+      |    |-- FloatingPointError
+      |    |-- OverflowError
+      |    +-- ZeroDivisionError
+      |-- AssertionError
+      |-- AttributeError
+      |-- BufferedError
+      |-- EOFError
+      |-- ImportError
+      |-- LookupError
+      |    |-- IndexError
+      |    +-- KeyError
+      |-- MemoryError
+      ...

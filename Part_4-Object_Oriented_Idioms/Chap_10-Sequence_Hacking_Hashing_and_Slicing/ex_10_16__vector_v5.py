@@ -198,7 +198,7 @@ import itertools
 
 
 class Vector:
-    typecode = "d"
+    typecode = 'd'
 
     def __init__(self, components):
         self._components = array(self.typecode, components)
@@ -208,8 +208,8 @@ class Vector:
 
     def __repr__(self):
         components = reprlib.repr(self._components)
-        components = components[components.find("[") : -1]
-        return "Vector({})".format(components)
+        components = components[components.find('[') : -1]
+        return 'Vector({})'.format(components)
 
     def __str__(self):
         return str(tuple(self))
@@ -218,7 +218,9 @@ class Vector:
         return bytes([ord(self.typecode)]) + bytes(self._components)
 
     def __eq__(self, other):
-        return len(self) == len(other) and all(a == b for a, b in zip(self, other))
+        return len(self) == len(other) and all(
+            a == b for a, b in zip(self, other)
+        )
 
     def __hash__(self):
         hashes = (hash(x) for x in self)
@@ -240,10 +242,10 @@ class Vector:
         elif isinstance(index, numbers.Integral):
             return self._components[index]
         else:
-            msg = "{.__name__} indices must be integers"
+            msg = '{.__name__} indices must be integers'
             raise TypeError(msg.format(cls))
 
-    shortcut_names = "xyzt"
+    shortcut_names = 'xyzt'
 
     def __getattr__(self, name):
         cls = type(self)
@@ -251,7 +253,7 @@ class Vector:
             pos = cls.shortcut_names.find(name)
             if 0 <= pos < len(self._components):
                 return self._components[pos]
-        msg = "{.__name__!r} object has no attribute {!r}"
+        msg = '{.__name__!r} object has no attribute {!r}'
         raise AttributeError(msg.format(cls, name))
 
     def angle(self, n):
@@ -265,16 +267,16 @@ class Vector:
     def angles(self):
         return (self.angle(n) for n in range(1, len(self)))
 
-    def __format__(self, fmt_spec=""):
-        if fmt_spec.endswith("h"):  # hypespherical coordinates
+    def __format__(self, fmt_spec=''):
+        if fmt_spec.endswith('h'):  # hypespherical coordinates
             fmt_spec = fmt_spec[:-1]
             coords = itertools.chain([abs(self)], self.angles())
-            outer_fmt = "<{}>"
+            outer_fmt = '<{}>'
         else:
             coords = self
-            outer_fmt = "({})"
+            outer_fmt = '({})'
         components = (format(c, fmt_spec) for c in coords)
-        return outer_fmt.format(", ".join(components))
+        return outer_fmt.format(', '.join(components))
 
     @classmethod
     def frombytes(cls, octets):
