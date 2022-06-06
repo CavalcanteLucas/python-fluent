@@ -1,4 +1,6 @@
-from copies.ex_10_16__vector_v5_copy import Vector
+import setup
+
+from Chap_10__Sequence_Hacking_Hashing_and_Slicing.ex_10_16__vector_v5 import Vector
 
 import math
 
