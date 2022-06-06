@@ -9,7 +9,7 @@ def shave_marks_latin(txt):
     keepers = []
     for c in norm_txt:
         if unicodedata.combining(c) and latin_base:
-            continue  # ignore diacritic on Latin base char
+            continue   # ignore diacritic on Latin base char
         keepers.append(c)
         # if it isn't combining char, it's a new base char
         if not unicodedata.combining(c):
