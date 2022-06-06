@@ -1,5 +1,12 @@
 import random
-from ex_11_9__tombola import Tombola
+
+# for when running from Chap 11:
+# from ex_11_9__tombola import Tombola
+
+# for when running from other chaps:
+from Chap_11__Interfaces_From_Protocols_to_ABCs.ex_11_9__tombola import (
+    Tombola,
+)
 
 
 class BingoCage(Tombola):
