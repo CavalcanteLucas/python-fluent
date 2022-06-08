@@ -13,5 +13,5 @@ def averager():
             break
         total += term
         count += 1
-        average = total/count
+        average = total / count
     return Result(count, average)

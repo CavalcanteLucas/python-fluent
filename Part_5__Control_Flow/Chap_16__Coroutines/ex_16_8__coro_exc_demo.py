@@ -1,6 +1,7 @@
 class DemoException(Exception):
     """An exception type for the demonstration."""
 
+
 def demo_exc_handling():
     print('-> coroutine started')
     while True:

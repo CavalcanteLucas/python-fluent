@@ -6,4 +6,4 @@ def averager():
         term = yield average
         total += term
         count += 1
-        average = total/count
+        average = total / count

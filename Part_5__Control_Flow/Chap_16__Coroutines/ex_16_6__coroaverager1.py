@@ -11,10 +11,10 @@ A coroutine to compute a running average
     20.0
     >>> coro_avg.send(5)
     15.0
-
 """
 
 from ex_16_5__coroutil import coroutine
+
 
 @coroutine
 def averager():
@@ -25,4 +25,4 @@ def averager():
         term = yield averager
         total += term
         count += 1
-        averager = total/count
+        averager = total / count

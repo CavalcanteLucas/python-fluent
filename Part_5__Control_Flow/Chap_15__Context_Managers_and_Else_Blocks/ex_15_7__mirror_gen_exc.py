@@ -4,6 +4,7 @@ import contextlib
 @contextlib.contextmanager
 def looking_glass():
     import sys
+
     original_write = sys.stdout.write
 
     def reverse_write(text):

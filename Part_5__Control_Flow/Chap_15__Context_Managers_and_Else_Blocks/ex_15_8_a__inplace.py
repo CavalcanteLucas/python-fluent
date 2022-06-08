@@ -4,8 +4,15 @@ import os
 
 
 @contextmanager
-def inplace(filename, mode='r', buffering=-1, encoding=None, errors=None,
-            newline=None, backup_extension=None):
+def inplace(
+    filename,
+    mode='r',
+    buffering=-1,
+    encoding=None,
+    errors=None,
+    newline=None,
+    backup_extension=None,
+):
     """Allow for a file to be replaced with new content.
 
     yields a tuple of (readable, writable) file objects, where writable
@@ -29,21 +36,38 @@ def inplace(filename, mode='r', buffering=-1, encoding=None, errors=None,
     except os.error:
         pass
     os.rename(filename, backupfilename)
-    readable = io.open(backupfilename, mode, buffering=buffering,
-                       encoding=encoding, errors=errors, newline=newline)
+    readable = io.open(
+        backupfilename,
+        mode,
+        buffering=buffering,
+        encoding=encoding,
+        errors=errors,
+        newline=newline,
+    )
     try:
         perm = os.fstat(readable.fileno()).st_mode
     except OSError:
-        writable = open(filename, 'w' + mode.replace('r', ''),
-                        buffering=buffering, encoding=encoding, errors=errors,
-                        newline=newline)
+        writable = open(
+            filename,
+            'w' + mode.replace('r', ''),
+            buffering=buffering,
+            encoding=encoding,
+            errors=errors,
+            newline=newline,
+        )
     else:
         os_mode = os.O_CREAT | os.O_WRONLY | os.O_TRUNC
         if hasattr(os, 'O_BINARY'):
             os_mode |= os.O_BINARY
         fd = os.open(filename, os_mode, perm)
-        writable = io.open(fd, "w" + mode.replace('r', ''), buffering=buffering,
-                           encoding=encoding, errors=errors, newline=newline)
+        writable = io.open(
+            fd,
+            'w' + mode.replace('r', ''),
+            buffering=buffering,
+            encoding=encoding,
+            errors=errors,
+            newline=newline,
+        )
         try:
             if hasattr(os, 'chmod'):
                 os.chmod(filename, perm)
