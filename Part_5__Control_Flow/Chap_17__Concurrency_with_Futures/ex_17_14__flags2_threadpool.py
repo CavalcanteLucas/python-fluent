@@ -2,9 +2,9 @@ import collections
 from concurrent import futures
 import requests
 import tqdm
-from http import HTTPStatus
 
-from ex_17_12_13__flags2_threadpool_sequential import download_one, main
+from ex_A_10__flags2_common import main, HTTPStatus
+from ex_A_11__flags2_sequential import download_one
 
 
 DEFAULT_CONCUR_REQ = 30
@@ -16,8 +16,7 @@ def download_many(cc_list, base_url, verbose, concur_req):
     with futures.ThreadPoolExecutor(max_workers=concur_req) as executor:
         to_do_map = {}
         for cc in sorted(cc_list):
-            future = executor.submit(download_one,
-                            cc, base_url, verbose)
+            future = executor.submit(download_one, cc, base_url, verbose)
             to_do_map[future] = cc
         done_iter = futures.as_completed(to_do_map)
         if not verbose:
@@ -33,14 +32,14 @@ def download_many(cc_list, base_url, verbose, concur_req):
             else:
                 error_msg = ''
                 status = res.status
-            
+
             if error_msg:
                 status = HTTPStatus.error
             counter[status] += 1
             if verbose and error_msg:
                 cc = to_do_map[future]
                 print('*** Error for {}: {}'.format(cc, error_msg))
-            
+
     return counter
 
 

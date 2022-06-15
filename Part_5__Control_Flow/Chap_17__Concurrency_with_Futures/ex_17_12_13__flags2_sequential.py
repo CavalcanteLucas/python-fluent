@@ -18,6 +18,7 @@ def get_flag(base_url, cc):
         resp.raise_for_status()
     return resp.content
 
+
 def download_one(cc, base_url, verbose=False):
     try:
         image = get_flag(base_url, cc)
@@ -32,10 +33,10 @@ def download_one(cc, base_url, verbose=False):
         save_flag(image, cc.lower() + '.gif')
         status = HTTPStatus.OK
         msg = 'OK'
-    
+
     if verbose:
         print(cc, msg)
-    
+
     return Result(status, cc)
 
 
@@ -55,11 +56,11 @@ def download_many(cc_list, base_url, verbose, max_req):
         else:
             error_msg = ''
             status = res.status
-        
+
         if error_msg:
             status = HTTPStatus.error
         counter[status] += 1
         if verbose and error_msg:
             print('*** Error for {}: {}'.format(cc, error_msg))
-    
+
     return counter

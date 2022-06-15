@@ -9,10 +9,10 @@ def display(*args):
 
 def loiter(n):
     msg = '{}loiter({}): doing nothing for {}s...'
-    display(msg.format('\t'*n, n, n))
+    display(msg.format('\t' * n, n, n))
     sleep(n)
     msg = '{}loiter({}): done.'
-    display(msg.format('\t'*n, n))
+    display(msg.format('\t' * n, n))
     return n * 10
 
 

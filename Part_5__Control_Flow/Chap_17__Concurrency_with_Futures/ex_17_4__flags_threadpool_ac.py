@@ -21,14 +21,14 @@ def download_many(cc_list):
             to_do.append(future)
             msg = 'Scheduled for {}: {}'
             print(msg.format(cc, future))
-        
+
         results = []
         for future in futures.as_completed(to_do):
             res = future.result()
             msg = '{} result: {!r}'
             print(msg.format(future, res))
             results.append(res)
-    
+
     return len(results)
 
 
