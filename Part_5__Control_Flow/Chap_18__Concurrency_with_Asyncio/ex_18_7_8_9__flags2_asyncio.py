@@ -1,3 +1,4 @@
+# ex_18_7__flags2_asyncio
 import asyncio
 import collections
 
@@ -7,7 +8,12 @@ from aiohttp import web
 import tqdm
 
 import setup
-from Chap_17__Concurrency_with_Futures.ex_A_10__flags2_common import main, HTTPStatus, Result, save_flag
+from Chap_17__Concurrency_with_Futures.ex_A_10__flags2_common import (
+    main,
+    HTTPStatus,
+    Result,
+    save_flag,
+)
 
 # default set low to avoid errors from remote site, such as
 # 503 - Service Tmporarily Unavailable
@@ -30,12 +36,11 @@ async def get_flag(base_url, cc):
         raise web.HTTPNotFound()
     else:
         raise aiohttp.HttpProcessingError(
-            code=resp.status,
-            message=resp.reason,
-            headers=resp.headers
+            code=resp.status, message=resp.reason, headers=resp.headers
         )
 
 
+# ex_18_9__flags2_asyncio_executor
 async def download_one(cc, base_url, semaphore, verbose):
     try:
         with (await semaphore):
@@ -49,19 +54,22 @@ async def download_one(cc, base_url, semaphore, verbose):
         save_flag(image, cc.lower() + '.gif')
         status = HTTPStatus.ok
         msg = 'OK'
-    
+
     if verbose and msg:
         print(cc, msg)
 
     return Result(status, cc)
 
 
+# ex_18_8__flags2_asyncio
 async def downloader_coro(cc_list, base_url, verbose, concur_req):
     counter = collections.Counter()
     semaphore = asyncio.Semaphore(concur_req)
-    to_do = [download_one(cc, base_url, semaphore, verbose)
-            for cc in sorted(cc_list)]
-        
+    to_do = [
+        download_one(cc, base_url, semaphore, verbose)
+        for cc in sorted(cc_list)
+    ]
+
     to_do_iter = asyncio.as_completed(to_do)
     if not verbose:
         to_do_iter = tqdm.tqdm(to_do_iter, total=len(cc_list))
@@ -80,7 +88,7 @@ async def downloader_coro(cc_list, base_url, verbose, concur_req):
             status = HTTPStatus.error
         else:
             status = res.status
-        
+
         counter[status] += 1
 
     return counter
