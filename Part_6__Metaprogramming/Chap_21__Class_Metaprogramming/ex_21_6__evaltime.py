@@ -1,4 +1,4 @@
-from evalsupport import deco_alpha
+from ex_21_7_12__evalsupport import deco_alpha
 
 print('<[1]> evaltime module start')
 
