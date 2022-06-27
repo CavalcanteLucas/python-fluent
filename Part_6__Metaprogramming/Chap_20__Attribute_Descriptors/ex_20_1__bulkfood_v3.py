@@ -1,8 +1,7 @@
 class Quantity:
-
     def __init__(self, storage_name):
         self.storage_name = storage_name
-    
+
     def __set__(self, instance, value):
         if value > 0:
             instance.__dict__[self.storage_name] = value
@@ -19,6 +18,6 @@ class LineItem:
         self.description = description
         self.weight = weight
         self.price = price
-    
+
     def subtotal(self):
         return self.weight * self.price
