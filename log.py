@@ -1,5 +1,5 @@
 """
-read: 336
+CURRENT_PAGE = 339
 """
 
 import argparse
@@ -13,7 +13,7 @@ def main(current_page):
     with open(__file__, 'r') as file:
         lines = file.readlines()
 
-    lines[1] = 'read: {}\n'.format(current_page)
+    lines[1] = 'CURRENT_PAGE = {}\n'.format(current_page)
 
     with open(__file__, 'w') as file:
         for line in lines:
@@ -22,10 +22,11 @@ def main(current_page):
     progress = int(current_page) / TOTAL_PAGES * 100
 
     system('git add -A')
+    system('git checkout read')
     system('git commit -m "{}"'.format(lines[1]))
     system('git push origin read')
 
-    print('\nCurrent progress: {:.2f}'.format(progress), end='')
+    print('\n\tCurrent progress: {:.2f}'.format(progress), end='')
 
 
 if __name__ == '__main__':
