@@ -1,5 +1,5 @@
 """
-CURRENT_PAGE = 339
+CURRENT_PAGE = 341
 """
 
 import argparse
@@ -23,7 +23,7 @@ def main(current_page):
 
     system('git add -A')
     system('git checkout read')
-    system('git commit -m "{}"'.format(lines[1]))
+    system('git commit -m "read: {}"'.format(current_page))
     system('git push origin read')
 
     print('\n\tCurrent progress: {:.2f}'.format(progress), end='')
